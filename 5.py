@@ -7,6 +7,7 @@ while n:
     nums = input().split(" ")
     s = 0
     k = False
+    wrong_num = []
     for i in nums:
         if i == 'q':
             print(s_all,'(',s,')')
@@ -16,8 +17,10 @@ while n:
             try:
                 s += float(i)
             except:
-                k = True 
+                k = True
+                wrong_num.append(i) 
     s_all += s
     if k:
         print('Вводите только числа, разделенные пробелом, или q для завершения работы')
+        print('Неверно введены: ',wrong_num)
     print(s_all,'(',s,')')
