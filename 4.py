@@ -5,10 +5,8 @@
 #n, m = argv
 n = int(input('Введите нижнюю границу: '))
 m = int(input('Введите верхнюю границу списка: '))
-from random import randint
-my_list = []
-for i in range(2 * (m - n)):
-    my_list.append(randint(n,m))
-print(my_list)
-new_list = [el for el in my_list if my_list.count(el) == 1]
-print(new_list)
+#from random import randint
+import random
+#my_list = [random.randint(n,m) for i in range(2 * (m - n))]
+#print([random.randint(n,m) for i in range(2 * (m - n))])
+print([el for el in [random.randint(n,m) for i in range(2 * (m - n))] if [random.randint(n,m) for i in range(2 * (m - n))].count(el) == 1])
