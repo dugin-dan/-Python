@@ -1,12 +1,17 @@
-#4. Представлен список чисел. Определить элементы списка, не имеющие повторений. Сформировать итоговый массив чисел, соответствующих требованию. Элементы вывести в порядке их следования в исходном списке. Для выполнения задания обязательно использовать генератор.
-#Пример исходного списка: [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11].
-#Результат: [23, 1, 3, 10, 4, 11]
-#from sys import argv
-#n, m = argv
-n = int(input('Введите нижнюю границу: '))
-m = int(input('Введите верхнюю границу списка: '))
-#from random import randint
-import random
-#my_list = [random.randint(n,m) for i in range(2 * (m - n))]
-#print([random.randint(n,m) for i in range(2 * (m - n))])
-print([el for el in [random.randint(n,m) for i in range(2 * (m - n))] if [random.randint(n,m) for i in range(2 * (m - n))].count(el) == 1])
+#4. Создать (не программно) текстовый файл со следующим содержимым:
+#One — 1
+#Two — 2
+#Three — 3
+#Four — 4
+#Необходимо написать программу, открывающую файл на чтение и считывающую построчно данные. При этом английские числительные должны заменяться на русские. Новый блок строк должен записываться в новый текстовый файл.
+from translate import Translator
+translator= Translator(from_lang="en",to_lang="ru")
+new_f = open("text_4_new.txt", "w")
+with open("text_4.txt", "r") as my_f:
+    for line in my_f:
+        str = line.split(" ")
+        str[0] = translator.translate(line.split(" ")[0])        
+        new_f.write(" ".join(str))
+new_f.close()
+with open("text_4_new.txt") as f:
+    print(f.read())
