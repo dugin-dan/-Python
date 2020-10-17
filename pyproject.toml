@@ -6,6 +6,7 @@ authors = ["repl.it user <replituser@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+termcolor = "^1.1.0"
 translate = "^3.5.0"
 
 [tool.poetry.dev-dependencies]

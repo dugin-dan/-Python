@@ -1,13 +1,37 @@
-#5. Создать (программно) текстовый файл, записать в него программно набор чисел, разделенных пробелами. Программа должна подсчитывать сумму чисел в файле и выводить ее на экран.
-#Использовать генератор?
+#5. Реализовать класс Stationery (канцелярская принадлежность). Определить в нем атрибут title (название) и метод draw (отрисовка). Метод выводит сообщение “Запуск отрисовки.” Создать три дочерних класса Pen (ручка), Pencil (карандаш), Handle (маркер). В каждом из классов реализовать переопределение метода draw. Для каждого из классов методы должен выводить уникальное сообщение. Создать экземпляры классов и проверить, что выведет описанный метод для каждого экземпляра.
+class Stationery:
+    def __init__(self, title):
+        self.title = title
+    def draw(self):
+        print("Запуск отрисовки.")
 
-with open("text_5.txt", "w") as my_f:
-    while True:
-        num = input('Введите число или q для завершения: ')
-        if num == "q":
-            break
-        elif num.isnumeric():
-            my_f.write((num + " "))
-from functools import reduce
-with open("text_5.txt", "r") as my_f:
-    print(reduce(lambda x,y: x + y, list(map(float,my_f.readline().split()))))
+class Pen(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+    
+    def draw(self):
+        print(self.title)
+        print("Создаем надпись")
+
+class Pencil(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+    def draw(self):
+        print(self.title)
+        print("Штрихуем")
+
+class Handle(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+    def draw(self):
+        print(self.title)
+        print("Раскрашиваем")
+
+p1 = Pen("ручка")
+p1.draw()
+
+p2 = Pencil("карандаш")
+p2.draw()
+
+p3 = Handle("маркер")
+p3.draw()
