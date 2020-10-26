@@ -1,20 +1,33 @@
-#7. Реализовать проект «Операции с комплексными числами». Создайте класс «Комплексное число», реализуйте перегрузку методов сложения и умножения комплексных чисел. Проверьте работу проекта, создав экземпляры класса (комплексные числа) и выполнив сложение и умножение созданных экземпляров. Проверьте корректность полученного результата.
+#el = input("Введите число: ")
 
-class ComplexNum:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+def is_float(el):
+    j = 0
+    len(list(el))
+    for i in list(el):
+        if 44 <= ord(i) <= 46 or 48 <= ord(i) <= 57:
+            j += 1
+    if j == len(list(el)):
+        return False
+    else:
+        return True
+#print(is_float(el))
 
-    def __add__(self, other):
-        return ComplexNum(self.a + other.a, self.b + other.b)
+class MyException(Exception):
+    def __init__(self, txt):
+        self.txt = txt
 
-    def __mul__(self, other):
-        return ComplexNum(self.a * other.a - self.b * other.b, self.a * other.b + self.b * other.a)
-
-    def __str__(self):
-        return f"{self.a} + {self.b}i"
-
-c_1 = ComplexNum(float(input("Введите действительную часть числа: ")), float(input('Введите мнимую часть числа: ')))
-c_2 = ComplexNum(float(input("Введите действительную часть числа: ")), float(input('Введите мнимую часть числа: ')))
-print(c_1 + c_2)
-print(c_1 * c_2)
+flag = True
+my_list = []
+while flag == True:
+    el = input("Введите число: ")
+    if el == "q":
+        flag = False
+        print(my_list)
+    else:
+        try:
+            if is_float(el):
+                raise MyException("Вводите только числа!")
+        except (ValueError, MyException) as err:
+            print(err)
+        else:
+            my_list.append(float(el))
